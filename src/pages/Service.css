@@ -1,0 +1,19 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.align{
+    padding: 0 5vh;
+}
+
+@media (max-width: 768px) {
+    .align{
+        padding: 0px;
+    }
+    .service{
+        padding: 0px;
+        height: fit-content;
+    }
+}

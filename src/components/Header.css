@@ -1,0 +1,117 @@
+@import "tailwindcss";
+
+@reference "tailwindcss";
+
+/* Basic reset – safe to keep */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Container / layout utility */
+.align {
+  width: 100%;
+  padding: 0 1.25rem;           /* 20px base – comfortable on mobile */
+  @apply sm:px-6 lg:px-8;       /* grows nicely on larger screens */
+}
+
+/* Active link indicator */
+.active {
+  @apply border-b-2 border-lime-600;
+}
+
+/* ── Desktop nav link style with underline animation ── */
+.link {
+  @apply relative text-lime-600 font-medium transition-colors duration-300;
+}
+
+/* Underline only on desktop */
+@media (min-width: 768px) {
+  .link::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -1px;
+    left: 0;
+    background-color: #65a30d;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .link:hover::before,
+  .link.active::before {
+    visibility: visible;
+    width: 100%;
+  }
+
+  .link:hover {
+    color: #4f8c0a;           /* slightly darker lime on hover */
+  }
+}
+
+/* ── CTA Button (same on mobile & desktop) ── */
+.get-in-touch-btn {
+  @apply text-lime-600 border-2 border-lime-600
+         px-5 py-2.5 rounded-md font-medium
+         transition-all duration-500 ease-out
+         shadow-sm hover:shadow-lg;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
+}
+
+.get-in-touch-btn:hover,
+.get-in-touch-btn:focus-visible {
+  transform: translate(2px, -2px) scale(1.03);
+  box-shadow: 0 10px 15px -3px rgba(101, 163, 13, 0.25),
+              0 4px 6px -4px rgba(101, 163, 13, 0.15);
+  outline: none;
+  /* No background fill – keeping original transparent style */
+}
+
+/* ── Mobile-specific adjustments ── */
+@media (max-width: 767px) {
+  /* No underline / border effect on mobile links */
+  .link::before {
+    display: none;
+  }
+
+  .link:hover {
+    color: #65a30d;           /* stay the same color – no darkening */
+  }
+
+  /* Mobile menu container */
+  .mobile-menu {
+    @apply fixed inset-x-0 top-[10vh] bg-[#fafaf9] shadow-xl z-40
+           overflow-y-auto;
+  }
+
+  /* Mobile menu links – better spacing & touch targets */
+  .mobile-link {
+    @apply  h-[5vh] w-full flex justify-center items-center text-center text-xl font-medium text-gray-800
+           py-6 px-6 transition-colors duration-200;
+  }
+
+  .mobile-link:hover,
+  .mobile-link.active {
+    @apply bg-lime-50 text-lime-700;
+  }
+
+  /* Make "Get in Touch" look like button in mobile menu too */
+  .mobile-link.get-in-touch-btn {
+    @apply mt-6 mx-auto w-3/4 max-w-xs text-lg py-4;
+  }
+}
+
+/* Custom components layer */
+@layer components {
+  .card {
+    @apply m-10 rounded-lg bg-white shadow-md;
+  }
+  .dark-card {
+    @apply bg-gray-800 text-lime-400 shadow-lg;
+  }
+  .light-card {
+    @apply bg-gray-50 text-lime-700 shadow;
+  }
+}

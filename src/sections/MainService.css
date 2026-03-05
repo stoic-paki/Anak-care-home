@@ -1,0 +1,139 @@
+.main-service {
+  /* padding: 20vh 0px; */
+  margin-top: 15vh;
+  /* border: 1px solid purple; */
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.services-slider-wrapper {
+  /* display: flex; */
+  position: relative;
+  height: 80%;
+}
+.cards-parent {
+  padding: 5vh 0;
+}
+.the-card {
+  padding: 2vh 0;
+  min-height: fit-content;
+  min-width: fit-content;
+}
+
+/* Arrow buttons - override slick defaults with higher specificity */
+.services-slider-wrapper .slick-prev,
+.services-slider-wrapper .slick-next {
+  z-index: 10;
+  width: 44px;
+  height: 44px;
+  background-color: #65a30d !important;  /* !important to beat slick-theme */
+  border-radius: 50%;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+/* Slick theme sets background on :before — clear it */
+.services-slider-wrapper .slick-prev::before,
+.services-slider-wrapper .slick-next::before {
+  font-size: 20px;
+  color: white;
+  opacity: 1;
+  background: none;
+  background-color: transparent;
+}
+
+.services-slider-wrapper .slick-prev:hover,
+.services-slider-wrapper .slick-next:hover {
+  background-color: #4d7c0f !important;
+}
+
+/* Override slick-theme's gray disabled state */
+.services-slider-wrapper .slick-prev.slick-disabled,
+.services-slider-wrapper .slick-next.slick-disabled {
+  background-color: #a3a3a3 !important;
+  cursor: not-allowed;
+}
+
+.services-slider-wrapper .slick-prev {
+  left: -50px;
+}
+.services-slider-wrapper .slick-next {
+  right: -50px;
+}
+
+/* Dots */
+.services-slider-wrapper .slick-dots {
+  bottom: -40px;
+}
+.services-slider-wrapper .slick-dots li button::before {
+  font-size: 10px;
+  color: #65a30d;
+  opacity: 0.4;
+}
+.services-slider-wrapper .slick-dots li.slick-active button::before {
+  color: #65a30d;
+  opacity: 1;
+}
+
+/* On small screens, pull arrows inside */
+@media (max-width: 768px) {
+  .services-slider-wrapper .slick-prev {
+    left: -12px;
+  }
+
+.services-slider-wrapper .slick-prev,
+  .services-slider-wrapper .slick-next {
+    display: none !important;     /* ← this hides both arrows completely */
+  }
+
+  .main-service{
+    margin-top: 5vh;
+    padding: 10vh 0px;
+    height: fit-content;
+    width: 100%;
+    /* border: 1px solid yellow; */
+  }
+  .services-slider-wrapper .slick-next {
+    right: -12px;
+  }
+  .services-slider-wrapper .slick-dots {
+    bottom: -50px;
+  }
+}
+
+@media ((min-width: 786px) and (max-width: 1023px)) {
+.services-slider-wrapper .slick-prev,
+  .services-slider-wrapper .slick-next {
+    display: none !important;     /* ← this hides both arrows completely */
+  }
+
+  .main-service{
+    margin-top: 5vh;
+    padding: 10vh 0px;
+    height: fit-content;
+    width: 100%;
+    /* border: 1px solid yellow; */
+  }
+}
+
+/* Equal height cards */
+.services-slider-wrapper .slick-track {
+  display: flex !important;
+}
+
+.services-slider-wrapper .slick-slide {
+  height: inherit !important;
+}
+
+.services-slider-wrapper .slick-slide > div {
+  height: 100%;
+}
+
+.the-card {
+  height: 100%;
+  padding: 2vh 8px;
+}

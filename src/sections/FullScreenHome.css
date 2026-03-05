@@ -1,0 +1,49 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* border: 1px solid purple */
+}
+
+.align{
+    padding:5vh;
+}
+
+.footer-align{
+    padding: 5vh;
+}
+
+.links-wrapper{
+    margin: 1vh;
+}
+
+.adding-padding{
+    padding: 5vh;
+}
+
+.adding-padding-cards{
+    padding:2vh;
+}
+
+.the-number{
+    display: none;
+}
+
+
+.full-section{
+    margin-bottom: 5vh;
+}
+
+.group:hover .the-number{
+    display: flex;
+}
+
+.hero-button:hover{
+    transition: all 0.3s ease;
+    transform: translate(2px, -2px);
+}
+
+.hero-button:hover > .inline{
+    transition: all 0.6s ease;
+    transform:translate(15px, 0px) ;
+}

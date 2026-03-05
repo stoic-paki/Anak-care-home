@@ -1,0 +1,15 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.Service_card {
+  padding: 2vh;
+  height: 100%;
+}
+
+.Service_card .btn {
+  width: 80%;
+  padding: 2vh 0;
+}

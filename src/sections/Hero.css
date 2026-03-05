@@ -1,0 +1,63 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.hero-section{
+    position: relative;
+    padding: 0 5vh;
+}
+
+.hero-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.2) 0%,
+    rgba(0, 0, 0, 0.4) 25%,
+    transparent 60%
+  );
+  pointer-events: none; /* lets clicks pass through */
+  z-index: 1;
+}
+
+.hero-section > * {
+  position: relative;
+  z-index: 2; /* text/buttons above overlay */
+}
+
+.company-name{
+    border-bottom: 5px solid #65a30d;
+    border-radius: 5px;
+    padding-bottom: 5px;
+    padding: 5px 10px;
+}
+
+.hero-button:hover{
+    transition: all 0.3s ease;
+    transform: translate(2px, -2px);
+}
+
+.hero-button:hover > .inline{
+    transition: all 0.6s ease;
+    transform:translate(15px, 0px) ;
+}
+
+@media (max-width: 768px) {
+.hero-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);   /* 65% black → strong dimming */
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Make sure text/buttons stay above the overlay */
+  .hero-section > * {
+    position: relative;
+    z-index: 2;
+  }
+}

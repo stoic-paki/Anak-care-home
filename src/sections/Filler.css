@@ -1,0 +1,11 @@
+body{
+    overflow-x: hidden;
+}
+
+#learn{
+    margin: 10vh 0;
+}
+
+.adding-padding{
+    padding: 2vh;
+}
