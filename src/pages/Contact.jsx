@@ -2,12 +2,13 @@
 
 import React, { useState } from 'react';
 import emailjs from '@emailjs/browser';
+import ReCAPTCHA from 'react-google-recaptcha';
 import "./Contact.css";
 
 const Contact = () => {
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState("idle"); // idle | loading | success | error
-
+  const [capVal, setCapVal] = useState(null);
   const validate = (data) => {
     const errs = {};
     if (!data.get("name")?.trim()) errs.name = "Name is required.";
@@ -41,6 +42,8 @@ const Contact = () => {
     }
   };
 
+  const siteKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
+
   return (
     <section className='contact-section flex flex-col justify-center items-center align w-full h-fit'>
       <div className="contact-wrapper h-fit w-full flex flex-col justify-center items-center gap-10">
@@ -69,9 +72,14 @@ const Contact = () => {
             <textarea className='border-2 input-form' name='message' placeholder='Your Message'></textarea>
             {errors.message && <p className="text-red-500 text-sm">{errors.message}</p>}
 
+
+            <ReCAPTCHA
+            sitekey={siteKey}
+            onChange={(value) => setCapVal(value)}/>
+
             <button
               type="submit"
-              disabled={status === "loading"}
+              disabled={!capVal || status === "loading"}
               className='submit-button border-2 bg-lime-600 text-white py-2 px-4 rounded hover:bg-lime-700 disabled:opacity-50'
             >
               {status === "loading" ? "Sending..." : "Send Message"}
